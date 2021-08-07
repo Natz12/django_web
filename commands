@@ -18,3 +18,46 @@ password: exampleex
 
 # Go to http://127.0.0.1:8000/admin/ to do all the admin stuff
 # Add posts, users and groups
+
+# To open Django shell
+python manage.py shell
+
+    # To display all our posts:
+    from blog.models import Post
+    Post.objects.all()
+
+    # To display all our posts ordered by
+    Post.objects.order_by('created_date')
+
+    # To display all our posts ordered by reversed
+    Post.objects.order_by('-created_date')
+
+    # get the instance of user
+    from django.contrib.auth.models import User
+        # See what users we have in our database
+        User.objects.all()
+    me = User.objects.get(username='example')
+
+    # To create a new instance of type <blog.models.<object>> <object/ in this case is Post
+    Post.objects.create(author = me, title = "Test Post 4 from terminal", text = "This was create on the Django Shell")
+
+    # To see Posts filter by some property
+    Post.objects.filter(author = me)
+    Post.objects.filter(title__contains='terminal')
+    
+    # To get a property of the first result of a query
+
+    # To filter posts that have been published
+    from django.utils import timezone
+    Post.objects.filter(published_date__lte=timezone.now())
+
+    # To publish a post
+    post = Post.objects.get(title = Post.objects.filter(title__contains='terminal')[0].title)
+
+
+    # To exit (ctrl+D)
+    exit()
+
+
+
+

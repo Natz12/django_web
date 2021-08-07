@@ -1,14 +1,33 @@
+<!-- Añadir codigo CSS -->
+{% load static %}
+<!-- FIN Añadir codigo CSS -->
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Django Example Blog</title>
+        <!-- To install bootstrap and be able to use CSS -->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <!-- END To "install" bootstrap-->
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}"> <!-- Import css file -->     
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css"> <!-- Import family font -->
+        <title>Django Example Blog</title> <!---->
     </head>
     <body>
-        <header>
-            <h1><a href="/">Django Example Blog</a></h1>
-        </header>
+        <div class = "page-header">
+            <header>
+                <h1><a href="/">Django Example Blog</a></h1>
+            </header>
+        </div>
 
-        <article>
+        {% for post in posts %}    
+            <div calls = "post">
+                <p> publicado: {{ post.published_date }}</p>
+                <h2><a href="">{{ post.title }}</a></h2>
+                <p>{{ post.text|linebreaksbr }}</p>
+            </div>
+        {% endfor %}
+
+        <!-- <article>
             <time>published: 14.06.2014, 12:14</time>
             <h2><a href="">My first post</a></h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -29,6 +48,6 @@
                 etiam tempor orci eu lobortis elementum nibh tellus. Massa sapien faucibus et molestie. Faucibus ornare suspendisse sed nisi lacus 
                 sed viverra tellus. Nec feugiat nisl pretium fusce id. Aliquet nibh praesent tristique magna sit amet purus gravida quis. Ut sem nulla 
                 pharetra diam sit amet nisl.</p>
-        </article>
+        </article> -->
     </body>
 </html>
