@@ -1,0 +1,20 @@
+# To start web service
+python manage.py runserver
+
+# To make Django know we have some changes in our model of an <app>
+# and prepare a migration file for <app>
+python manage.py makemigrations <app>
+
+# To apply migration file for <app>
+python manage.py migrate <app>
+
+# To create a superuser - a user account that has control 
+# over everything on the site
+python manage.py createsuperuser
+
+user: example
+email: ex@ex.com
+password: exampleex
+
+# Go to http://127.0.0.1:8000/admin/ to do all the admin stuff
+# Add psots, users and groups
